@@ -1,3 +1,7 @@
+import creatures.Animal;
+import creatures.Human;
+import devices.Car;
+import devices.Phone;
 
 public class Main {
 
@@ -24,8 +28,8 @@ public class Main {
         me.pet.feed();
 
 
-        Car car1 = new Car("Peugeot","307",25000.00);
-        Car car2 = new Car("Renault","Scenic",5000.00);
+        Car car1 = new Car("Peugeot","307",25000.00,1900);
+        Car car2 = new Car("Renault","Scenic",5000.00,1990);
 
 
         System.out.println(car1);
@@ -33,7 +37,7 @@ public class Main {
         System.out.println(car1);
         System.out.println(car2);
 
-        Phone phone = new Phone("Samsung","A51");
+        Phone phone = new Phone("Samsung","A51",1990);
 
         me.phone = phone;
 
@@ -48,7 +52,7 @@ public class Main {
         me.setSalary();
         System.out.println(me.getSalary());
 
-        System.out.println(new Car("Peugeot","307",25000.00).equals(new Car("Peugeot","307",25000.00)));
+        System.out.println(new Car("Peugeot","307",25000.00,1990).equals(new Car("Peugeot","307",25000.00,1990)));
         System.out.println(car1.equals(car2));
 
 
@@ -56,6 +60,10 @@ public class Main {
         System.out.println(dog);
         System.out.println(phone);
         System.out.println(me);
+
+        car1.recharge(5);
+
+
 
 
 

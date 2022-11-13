@@ -1,19 +1,26 @@
+package creatures;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.List;
+import devices.*;
 
 
-public class Human {
-    String firstName;
+public class Human extends Animal {
+    public String firstName;
     String lastName;
-    Animal pet;
+    public Animal pet;
     private Car car;
     private Double salary = 0.0;
-    Phone phone;
+    public Phone phone;
     Scanner scan = new Scanner(System.in);
     Scanner scan2 = new Scanner(System.in);
     List<Double> salaryHistoryList = new ArrayList<Double>();
     List<String> salaryDateList = new ArrayList<String>();
+
+    public Human() {
+        super("Homo sapiens");
+    }
 
 
     public Double getSalary() {
@@ -81,6 +88,9 @@ public class Human {
             System.out.println("Nie masz wystarczająco pineniedzy na zakup auta. Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
         }
     }
+
+
+
     public String toString(){
         return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.car
                 + " Phone: " + this.phone + " Salary: " + salary;

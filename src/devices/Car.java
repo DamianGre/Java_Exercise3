@@ -1,17 +1,17 @@
-public class Car {
-    final String producer;
-    final String model;
-    Double value;
+package devices;
+
+public class Car extends Device{
+
+    public Double value;
     Double millage;
     String colour;
     Double width;
     Double height;
     Double lenght;
 
-    Car(String producer, String model, Double value) {
-        this.producer = producer;
-        this.model = model;
-        this.value = value;
+    public Car(String producer, String model, Double value, Integer yearOfproduction) {
+        super(producer, model, yearOfproduction);
+        this.value =value;
     }
 
     public boolean equals(Object o) {
@@ -29,5 +29,16 @@ public class Car {
 
     public String toString(){
         return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;
+    }
+
+    @Override
+    public void recharge(Integer precentage) {
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Naładowano");
+
+
     }
 }

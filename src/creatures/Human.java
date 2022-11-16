@@ -89,6 +89,9 @@ public class Human extends Animal {
         }
     }
 
+    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
+
+    }
 
 
     public String toString(){

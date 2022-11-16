@@ -1,6 +1,8 @@
 package devices;
 
-public abstract class Device {
+import creatures.Human;
+
+public abstract class Device implements Salleable{
     final String producer;
     final String model;
     final Integer yearOfProduction;
@@ -12,4 +14,5 @@ public abstract class Device {
     }
 
     abstract void recharge(Integer precentage);
+
 }

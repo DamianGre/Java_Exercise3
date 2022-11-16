@@ -1,4 +1,5 @@
 import creatures.Animal;
+import creatures.FarmAnimal;
 import creatures.Human;
 import devices.Car;
 import devices.Phone;
@@ -7,7 +8,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        Animal dog = new Animal("dog");
+        FarmAnimal dog = new FarmAnimal("dog");
 
         dog.name = "Szarik";
         dog.isAlive = true;
@@ -23,9 +24,12 @@ public class Main {
         me.pet = dog;
         dog.takeForAWalk();
         System.out.println(dog.weight);
+        me.pet.feed(5.0);
+        System.out.println(dog.weight);
         dog.takeForAWalk();
         dog.takeForAWalk();
         me.pet.feed();
+        System.out.println(dog.weight);
 
 
         Car car1 = new Car("Peugeot","307",25000.00,1900);

@@ -1,6 +1,8 @@
 package devices;
 
-public class Car extends Device{
+import creatures.Human;
+
+public class Car extends Device implements Salleable{
 
     public Double value;
     Double millage;
@@ -27,9 +29,6 @@ public class Car extends Device{
                 this.value.equals(car.value);
     }
 
-    public String toString(){
-        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;
-    }
 
     @Override
     public void recharge(Integer precentage) {
@@ -38,7 +37,13 @@ public class Car extends Device{
         System.out.println("Ładuje");
         System.out.println("Ładuje");
         System.out.println("Naładowano");
+    }
 
+    public void sell(Human seller, Human buyer, Double price){
 
     }
+    public String toString(){
+        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;
+    }
+
 }

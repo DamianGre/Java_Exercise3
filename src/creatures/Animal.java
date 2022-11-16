@@ -1,6 +1,8 @@
 package creatures;
 
-public class Animal {
+import devices.Salleable;
+
+public abstract class Animal implements Feedable, Salleable {
     private static final Double DEFAULT_DOG_WEIGHT = 7.0;
     private static final Double DEFAULT_BOAR_WEIGHT = 30.2;
     private static final Double DEFAULT_CAT_WEIGHT = 2.5;
@@ -48,6 +50,14 @@ public class Animal {
             System.out.println("Czy wszystko dobrze z głową?");
         }
     }
+    public void feed(Double foodWeight) {
+        if (this.isAlive == true) {
+            this.weight += foodWeight;
+            System.out.println("Dzięki za żarcie");
+        } else {
+            System.out.println("Czy wszystko dobrze z głową?");
+        }
+    }
 
     public void takeForAWalk() {
         if (this.isAlive == true) {
@@ -61,6 +71,10 @@ public class Animal {
         } else {
             System.out.println("DZOWNIĘ NA POLICJĘ!");
         }
+    }
+
+    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
+
     }
 
     public String toString() {

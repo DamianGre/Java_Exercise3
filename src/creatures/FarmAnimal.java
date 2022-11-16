@@ -1,7 +1,7 @@
 package creatures;
 
 public class FarmAnimal extends Animal implements Edible{
-    FarmAnimal(String specie){
+    public FarmAnimal(String specie){
         super(specie);
     }
     @Override
@@ -20,6 +20,10 @@ public class FarmAnimal extends Animal implements Edible{
             return false;
         }
     }
+
+    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
+
+    };
 
 
 }

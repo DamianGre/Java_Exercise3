@@ -43,4 +43,7 @@ public class Pet extends Animal implements Salleable {
         }
         System.out.println("Pet: " + this + "- ZOSTASŁ SPRZEDANY");
     }
+    public String toString() {
+        return "Specie: " + this.specie + " " + "Name: " + this.name + " " + "Weight: " + this.weight + " " + "Is alive? " + this.isAlive;
+    }
 }

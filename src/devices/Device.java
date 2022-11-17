@@ -14,5 +14,9 @@ public abstract class Device implements Salleable{
     }
 
     abstract void recharge(Integer precentage);
+    abstract void turnOn();
 
+    public String toString() {
+        return "Producer: " + this.producer + " " + "Model: " + this.model + " " + "Year of production: " + this.yearOfProduction + " ";
+    }
 }

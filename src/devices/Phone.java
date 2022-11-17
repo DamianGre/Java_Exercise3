@@ -13,12 +13,7 @@ public class Phone extends Device implements Salleable{
         super(producer, model, yearOfProduction);
     }
 
-    @Override
-    public void recharge(Integer precentage) {
-        System.out.println("Ładuje");
-        System.out.println("Ładuje");
-        System.out.println("Naładowano" + precentage);
-    }
+
 
     public void sell(Human seller, Human buyer, Double price){
 
@@ -54,6 +49,16 @@ public class Phone extends Device implements Salleable{
             System.out.println("Nie posiadasz tego na sprzedaż.");
         }
         System.out.println("Phone: " + this + "- ZOSTASŁ SPRZEDANY");
+    }
+    @Override
+    public void recharge(Integer precentage) {
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Naładowano" + precentage);
+    }
+    @Override
+    public void turnOn(){
+        System.out.println("Phone włączony");
     }
 
     public String toString() {

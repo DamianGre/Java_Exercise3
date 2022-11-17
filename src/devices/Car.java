@@ -32,14 +32,7 @@ public class Car extends Device implements Salleable{
     }
 
 
-    @Override
-    public void recharge(Integer precentage) {
-        System.out.println("Ładuje");
-        System.out.println("Ładuje");
-        System.out.println("Ładuje");
-        System.out.println("Ładuje");
-        System.out.println("Naładowano" + precentage);
-    }
+
 
     public void sell(Human seller, Human buyer, Double price){
 
@@ -75,6 +68,18 @@ public class Car extends Device implements Salleable{
             System.out.println("Nie posiadasz tego na sprzedaż.");
         }
         System.out.println("Car: " + this + "- ZOSTASŁ SPRZEDANY");
+    }
+    @Override
+    public void recharge(Integer precentage) {
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Ładuje");
+        System.out.println("Naładowano" + precentage);
+    }
+    @Override
+    public void turnOn(){
+        System.out.println("Car odpalony.");
     }
     public String toString(){
         return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;

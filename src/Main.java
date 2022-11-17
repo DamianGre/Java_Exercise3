@@ -1,5 +1,6 @@
 import creatures.Animal;
 import creatures.FarmAnimal;
+import creatures.Pet;
 import creatures.Human;
 import devices.Car;
 import devices.Phone;
@@ -8,7 +9,7 @@ public class Main {
 
     public static void main(String[] args) {
 
-        FarmAnimal dog = new FarmAnimal("dog");
+        Pet dog = new Pet("dog");
 
         dog.name = "Szarik";
         dog.isAlive = true;
@@ -19,6 +20,7 @@ public class Main {
         System.out.println(dog.weight);
 
         Human me = new Human();
+        Human human =new Human();
 
         me.firstName = "Damian";
         me.pet = dog;
@@ -49,12 +51,12 @@ public class Main {
         me.setSalary();
         me.setSalary();
         me.setSalary();
-        System.out.println(me.getSalary());
+        me.getSalary();
         me.setCar(car1);
-        System.out.println(me.getCar());
-        System.out.println(me.getSalary());
+        me.getCar();
+        me.getSalary();
         me.setSalary();
-        System.out.println(me.getSalary());
+        me.getSalary();
 
         System.out.println(new Car("Peugeot","307",25000.00,1990).equals(new Car("Peugeot","307",25000.00,1990)));
         System.out.println(car1.equals(car2));
@@ -66,6 +68,42 @@ public class Main {
         System.out.println(me);
 
         car1.recharge(5);
+
+        human.setSalary();
+
+
+
+        System.out.println(me.pet);
+        System.out.println("asdasdsasa");
+        System.out.println(human.pet);
+        System.out.println("asdasdsasa");
+
+        dog.sell(me, human, 50.0);
+
+        System.out.println(me.pet);
+        System.out.println("asdasdsasa");
+        System.out.println(human.pet);
+        System.out.println("asdasdsasa");
+
+        human.setSalary();
+
+        System.out.println(me.phone);
+        System.out.println("asdasdsasa");
+        System.out.println(human.phone);
+
+        phone.sell(me, human, 50.0);
+
+        System.out.println("++++++++++++++");
+
+        System.out.println(me.phone);
+        System.out.println("asdasdsasa");
+        System.out.println(human.phone);
+
+        human.sell(me, human, 50.0);
+
+        human.getSalary();
+        me.getSalary();
+
 
 
 

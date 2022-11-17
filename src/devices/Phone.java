@@ -1,8 +1,11 @@
 package devices;
 
 import creatures.Edible;
+import creatures.Human;
 
-public class Phone extends Device {
+import java.util.Scanner;
+
+public class Phone extends Device implements Salleable{
 
 
     public Phone(String producer, String model, Integer yearOfProduction)
@@ -14,12 +17,44 @@ public class Phone extends Device {
     public void recharge(Integer precentage) {
         System.out.println("Ładuje");
         System.out.println("Ładuje");
-        System.out.println("Naładowano");
+        System.out.println("Naładowano" + precentage);
     }
 
-    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
+    public void sell(Human seller, Human buyer, Double price){
 
-    };
+        Scanner scan3 = new Scanner(System.in);
+
+        String salaryDate;
+
+        if(seller.phone != null)
+        {
+            if(buyer.salary >= price)
+            {
+                seller.phone = null;
+                buyer.phone = this;
+
+                buyer.salary -= price;
+                seller.salary += price;
+
+                System.out.println("Podaj Datę przelewu za towar: ");
+                salaryDate = scan3.nextLine();
+                seller.salaryDateList.add(salaryDate);
+                buyer.salaryDateList.add(salaryDate);
+
+                double goodsCost = price * (-1);
+                buyer.salaryHistoryList.add(goodsCost);
+                seller.salaryHistoryList.add(price);
+            }
+            else
+            {
+                System.out.println("Nie masz tyle pieniedzy");
+            }
+        }
+        else {
+            System.out.println("Nie posiadasz tego na sprzedaż.");
+        }
+        System.out.println("Phone: " + this + "- ZOSTASŁ SPRZEDANY");
+    }
 
     public String toString() {
         return "Producer: " + this.producer + " " + "Model: " + this.model;

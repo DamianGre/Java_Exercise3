@@ -1,6 +1,10 @@
 package creatures;
 
-public class FarmAnimal extends Animal implements Edible{
+import devices.Salleable;
+
+import java.util.Scanner;
+
+public class FarmAnimal extends Animal implements Edible, Salleable {
     public FarmAnimal(String specie){
         super(specie);
     }
@@ -21,9 +25,41 @@ public class FarmAnimal extends Animal implements Edible{
         }
     }
 
-    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
+    public void sell(Human seller, Human buyer, Double price){
 
-    };
+        Scanner scan3 = new Scanner(System.in);
+
+        String salaryDate;
+
+        if(seller.pet != null)
+        {
+            if(buyer.salary >= price)
+            {
+                seller.pet = null;
+                buyer.pet = this;
+
+                buyer.salary -= price;
+                seller.salary += price;
+
+                System.out.println("Podaj Datę przelewu za towar: ");
+                salaryDate = scan3.nextLine();
+                seller.salaryDateList.add(salaryDate);
+                buyer.salaryDateList.add(salaryDate);
+
+                double goodsCost = price * (-1);
+                buyer.salaryHistoryList.add(goodsCost);
+                seller.salaryHistoryList.add(price);
+            }
+            else
+            {
+                System.out.println("Nie masz tyle pieniedzy");
+            }
+        }
+        else {
+            System.out.println("Nie posiadasz tego na sprzedaż.");
+        }
+        System.out.println("Pet: " + this + "- ZOSTASŁ SPRZEDANY");
+    }
 
 
 }

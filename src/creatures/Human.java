@@ -10,33 +10,35 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     public Animal pet;
-    private Car car;
-    private Double salary = 0.0;
+    public Car car;
+    public Double salary = 0.0;
     public Phone phone;
     Scanner scan = new Scanner(System.in);
     Scanner scan2 = new Scanner(System.in);
-    List<Double> salaryHistoryList = new ArrayList<Double>();
-    List<String> salaryDateList = new ArrayList<String>();
+    public List<Double> salaryHistoryList = new ArrayList<Double>();
+    public List<String> salaryDateList = new ArrayList<String>();
 
     public Human() {
         super("Homo sapiens");
     }
 
 
-    public Double getSalary() {
+    public void getSalary() {
 
-        for(int x=0; x < salaryDateList.size() || x < salaryHistoryList.size() ; x++)
-            if(this.salaryHistoryList.get(x) < 0)
-            {
+        for(int x=0; x < salaryDateList.size() || x < salaryHistoryList.size() ; x++) {
+            if (this.salaryHistoryList.get(x) < 0) {
                 System.out.println("W dniu: " + this.salaryDateList.get(x)
                         + ". Pobrano z konta: " + this.salaryHistoryList.get(x));
-            }
-            else {
+            } else {
                 System.out.println("W dniu: " + this.salaryDateList.get(x)
                         + ". Kwota wynagrodzenia wyniosła: " + this.salaryHistoryList.get(x));
             }
-        System.out.print("Dzisiaj stan konta wynosi: ");
-        return this.salary;
+        }
+
+        System.out.print("Dzisiaj stan konta wynosi: " + this.salary);
+        System.out.println(" ");
+
+
     }
 
     public void setSalary(){
@@ -89,8 +91,8 @@ public class Human extends Animal {
         }
     }
 
-    public void sell(creatures.Human seller, creatures.Human buyer, Double price){
-
+    public void sell(Human seller, Human buyer, Double price){
+        System.out.println("YOU CAN'T SELL HUMANS");
     }
 
 

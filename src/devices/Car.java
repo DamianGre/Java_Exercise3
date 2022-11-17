@@ -2,6 +2,8 @@ package devices;
 
 import creatures.Human;
 
+import java.util.Scanner;
+
 public class Car extends Device implements Salleable{
 
     public Double value;
@@ -36,11 +38,43 @@ public class Car extends Device implements Salleable{
         System.out.println("Ładuje");
         System.out.println("Ładuje");
         System.out.println("Ładuje");
-        System.out.println("Naładowano");
+        System.out.println("Naładowano" + precentage);
     }
 
     public void sell(Human seller, Human buyer, Double price){
 
+        Scanner scan3 = new Scanner(System.in);
+
+        String salaryDate;
+
+        if(seller.car != null)
+        {
+            if(buyer.salary >= price)
+            {
+                seller.car = null;
+                buyer.car = this;
+
+                buyer.salary -= price;
+                seller.salary += price;
+
+                System.out.println("Podaj Datę przelewu za towar: ");
+                salaryDate = scan3.nextLine();
+                seller.salaryDateList.add(salaryDate);
+                buyer.salaryDateList.add(salaryDate);
+
+                double goodsCost = price * (-1);
+                buyer.salaryHistoryList.add(goodsCost);
+                seller.salaryHistoryList.add(price);
+            }
+            else
+            {
+                System.out.println("Nie masz tyle pieniedzy");
+            }
+        }
+        else {
+            System.out.println("Nie posiadasz tego na sprzedaż.");
+        }
+        System.out.println("Car: " + this + "- ZOSTASŁ SPRZEDANY");
     }
     public String toString(){
         return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;

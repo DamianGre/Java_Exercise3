@@ -2,10 +2,16 @@ package devices;
 
 import creatures.Edible;
 import creatures.Human;
+import java.util.List;
 
+
+import java.util.List;
 import java.util.Scanner;
 
 public class Phone extends Device implements Salleable{
+
+    private static final  String DEFAULT_VERSION = "latest version";
+    private static final String DEFAULT_SERVERIP = "https://damiangrembocki.com";
 
 
     public Phone(String producer, String model, Integer yearOfProduction)
@@ -59,6 +65,26 @@ public class Phone extends Device implements Salleable{
     @Override
     public void turnOn(){
         System.out.println("Phone włączony");
+    }
+
+
+    public void installAPP(String appName){
+        this.installAPP(appName, DEFAULT_VERSION);
+    }
+    public void installAPP(String appName, String version){
+        this.installAPP(appName, version, DEFAULT_SERVERIP);
+    }
+    public void installAPP(String appName, String version, String serverIP){
+        System.out.println("Próba instalacji aplikacji" + appName + " w wersji: " + version );
+        System.out.println("Z serwera" + serverIP );
+        System.out.println("Sprawdzam płatności");
+        System.out.println("Pobieranie aplikacji");
+        System.out.println("Instalowanie aplikacji");
+    }
+    public void installAPP(List<String> appsToInstallNames) {
+        for(String appName : appsToInstallNames){
+            this.installAPP(appName);
+        }
     }
 
     public String toString() {

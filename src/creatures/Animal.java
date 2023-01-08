@@ -11,6 +11,7 @@ public abstract class Animal implements Feedable, Salleable {
     private static final Double DEFAULT_ANIMAL_WEIGHT = 1.0;
     private static final Double DEFAULT_COW_WEIGHT = 45.0;
     private static final  Double DEFAULT_SNAKE_WEIGHT = 1.0;
+    private static final  Double DEFAULT_FOOD_WEIGHT = 1.0;
 
     final String specie;
     public String name;
@@ -45,12 +46,7 @@ public abstract class Animal implements Feedable, Salleable {
     }
 
     public void feed() {
-        if (this.isAlive == true) {
-            this.weight += 0.5;
-            System.out.println("Dzięki za żarcie");
-        } else {
-            System.out.println("Czy wszystko dobrze z głową?");
-        }
+        this.feed(DEFAULT_FOOD_WEIGHT);
     }
     public void feed(Double foodWeight) {
         if (this.isAlive == true) {
@@ -114,6 +110,4 @@ public abstract class Animal implements Feedable, Salleable {
     public String toString() {
         return "Specie: " + this.specie + " " + "Name: " + this.name + " " + "Weight: " + this.weight + " " + "Is alive? " + this.isAlive;
     }
-
-
 }

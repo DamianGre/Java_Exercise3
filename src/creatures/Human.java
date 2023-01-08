@@ -10,7 +10,7 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     public Animal pet;
-    public Car car;
+    public devices.Car car;
     public Double salary = 0.0;
     public Phone phone;
     Scanner scan = new Scanner(System.in);
@@ -65,11 +65,11 @@ public class Human extends Animal {
         }while(salary <= 0);
     }
 
-    public Car getCar()
+    public devices.Car getCar()
     {
         return this.car;
     }
-    public void setCar(Car car){
+    public void setCar(devices.Car car){
         String salaryDate;
         if(this.salary >= car.value){
             System.out.println("Udało się kupić auto " + car + " za gotówkę. Z konta zostanie pobrana kwota: "+ car.value);
@@ -95,10 +95,8 @@ public class Human extends Animal {
         System.out.println("YOU CAN'T SELL HUMANS");
     }
 
-
     public String toString(){
         return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.car
-                + " Phone: " + this.phone + " Salary: " + salary;
+                + " Phone: " + this.phone + " Salary: " + this.salary;
     }
-
 }

@@ -4,7 +4,7 @@ import creatures.Human;
 
 import java.util.Scanner;
 
-public class Car extends Device implements Salleable{
+public abstract class Car extends Device implements Salleable{
 
     public Double value;
     Double millage;
@@ -17,29 +17,10 @@ public class Car extends Device implements Salleable{
         super(producer, model, yearOfproduction);
         this.value =value;
     }
-
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Car car = (Car) o;
-        return this.model == car.model &&
-                this.producer == car.producer &&
-                this.value.equals(car.value);
-    }
-
-
-
-
     public void sell(Human seller, Human buyer, Double price){
-
         Scanner scan3 = new Scanner(System.in);
 
         String salaryDate;
-
         if(seller.car != null)
         {
             if(buyer.salary >= price)
@@ -77,6 +58,8 @@ public class Car extends Device implements Salleable{
         System.out.println("Ładuje");
         System.out.println("Naładowano" + precentage);
     }
+    public abstract void reFuel();
+
     @Override
     public void turnOn(){
         System.out.println("Car odpalony.");
@@ -84,5 +67,4 @@ public class Car extends Device implements Salleable{
     public String toString(){
         return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;
     }
-
 }

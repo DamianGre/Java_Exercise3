@@ -2,12 +2,31 @@ import creatures.Animal;
 import creatures.FarmAnimal;
 import creatures.Pet;
 import creatures.Human;
-import devices.Car;
+import devices.Electric;
+import devices.Diesel;
+import devices.LPG;
 import devices.Phone;
+
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class Main {
 
     public static void main(String[] args) {
+        Phone nokia = new Phone("Nokia","5510",1990);
+
+        List<String> appNames = new ArrayList<>();
+        appNames.add("FB");
+        appNames.add("INSTAGRAM");
+        appNames.add("MESSENGER");
+
+        nokia.installAPP(appNames);
+        nokia.installAPP("snake");
+        nokia.installAPP("Tweeter", "4.17");
+        nokia.installAPP("mbank", "1.11", "http://michniewiczKrul.pl");
+
+
 
         Pet dog = new Pet("dog");
 
@@ -34,8 +53,8 @@ public class Main {
         System.out.println(dog.weight);
 
 
-        Car car1 = new Car("Peugeot","307",25000.00,1900);
-        Car car2 = new Car("Renault","Scenic",5000.00,1990);
+        Diesel car1 = new Diesel("Peugeot","307",25000.00,1900);
+        LPG car2 = new LPG("Renault","Scenic",5000.00,1990);
 
 
         System.out.println(car1);
@@ -58,8 +77,7 @@ public class Main {
         me.setSalary();
         me.getSalary();
 
-        System.out.println(new Car("Peugeot","307",25000.00,1990).equals(new Car("Peugeot","307",25000.00,1990)));
-        System.out.println(car1.equals(car2));
+        System.out.println(new Electric("Peugeot","307",25000.00,1990).equals(new Electric("Peugeot","307",25000.00,1990)));
 
 
         System.out.println(car1);
@@ -67,7 +85,6 @@ public class Main {
         System.out.println(phone);
         System.out.println(me);
 
-        car1.recharge(5);
 
         human.setSalary();
 

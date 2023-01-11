@@ -99,7 +99,7 @@ public class Human extends Animal {
     public void sumCarsValue(){
         Double sumCarValue = 0.0;
         for(Car car: garage){
-            sumCarValue += car.value;
+            sumCarValue += car.value; // !!!!!!!!!!!!!!! ZOBACZ CZY TO OK JEST
         }
         System.out.println(sumCarValue);
     }

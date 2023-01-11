@@ -12,8 +12,8 @@ import java.util.List;
 
 
 public class Main {
-
     public static void main(String[] args) {
+
         Phone nokia = new Phone("Nokia","5510",1990);
 
         List<String> appNames = new ArrayList<>();
@@ -38,8 +38,8 @@ public class Main {
         dog.feed();
         System.out.println(dog.weight);
 
-        Human me = new Human();
-        Human human =new Human();
+        Human me = new Human(5);
+        Human human =new Human(3);
 
         me.firstName = "Damian";
         me.pet = dog;
@@ -120,10 +120,6 @@ public class Main {
 
         human.getSalary();
         me.getSalary();
-
-
-
-
 
 
 

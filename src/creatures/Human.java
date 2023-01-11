@@ -10,7 +10,8 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     public Animal pet;
-    public devices.Car car;
+    public Car [] garage;
+    //public Car car;
     public Double salary = 0.0;
     public Phone phone;
     Scanner scan = new Scanner(System.in);
@@ -18,10 +19,10 @@ public class Human extends Animal {
     public List<Double> salaryHistoryList = new ArrayList<Double>();
     public List<String> salaryDateList = new ArrayList<String>();
 
-    public Human() {
+    public Human(Integer garageSize) {
         super("Homo sapiens");
+        this.garage= new Car[garageSize];
     }
-
 
     public void getSalary() {
 
@@ -65,9 +66,9 @@ public class Human extends Animal {
         }while(salary <= 0);
     }
 
-    public devices.Car getCar()
+    public devices.Car getCar(int carIndex)
     {
-        return this.car;
+        return this.garage[carIndex];
     }
     public void setCar(devices.Car car){
         String salaryDate;
@@ -93,6 +94,14 @@ public class Human extends Animal {
 
     public void sell(Human seller, Human buyer, Double price){
         System.out.println("YOU CAN'T SELL HUMANS");
+    }
+
+    public void sumCarsValue(){
+        Double sumCarValue = 0.0;
+        for(Car car: garage){
+            sumCarValue += car.value;
+        }
+        System.out.println(sumCarValue);
     }
 
     public String toString(){

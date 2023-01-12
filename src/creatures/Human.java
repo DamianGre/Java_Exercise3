@@ -12,7 +12,7 @@ public class Human extends Animal {
     public String firstName;
     String lastName;
     public Animal pet;
-    public Car [] garage;
+    public Car [] garage; // miejsca parkingowe są ponumerowane od 0
     //public Car car;
     public Double salary = 0.0;
     public Phone phone;
@@ -66,6 +66,7 @@ public class Human extends Animal {
 
     public Car getCar(Integer carIndex)
     {
+        System.out.print("Osoba: "+ this.firstName + " . Posiada na tym miejscu takie auto: ");
         return this.garage[carIndex];
     }
     public void getAllCarsInGarage()

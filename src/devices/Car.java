@@ -16,13 +16,14 @@ public abstract class Car extends Device implements Salleable{
         super(producer, model, value, yearOfProduction);
     }
     public void sell(Human seller, Human buyer, Double price, Integer carIndex){
+
         Scanner scan3 = new Scanner(System.in);
 
         String salaryDate;
-        if(seller.garage != null)
+        if(seller.garage != null && seller.garage[carIndex] != null)
         {
-            if(buyer.salary >= price)
-            {
+            System.out.println("\nSprzedajemy! "+ this + ". Za cenę " + price + "\n");
+            if(buyer.salary >= price){
                 for(int i = 0; i < buyer.garage.length; i++)
                 {
                     if(buyer.garage[i] == null)
@@ -32,6 +33,7 @@ public abstract class Car extends Device implements Salleable{
                     }
                     else{
                         System.out.println("Brak miejsca w garażu.");
+                        return;
                     }
                 }
                 seller.garage[carIndex] = null;
@@ -51,10 +53,11 @@ public abstract class Car extends Device implements Salleable{
             else
             {
                 System.out.println("Nie masz tyle pieniedzy");
+                return;
             }
-        }
-        else {
+        }else{
             System.out.println("Nie posiadasz tego na sprzedaż.");
+            return;
         }
         System.out.println("Car: " + this + "- ZOSTASŁ SPRZEDANY");
     }
@@ -73,6 +76,6 @@ public abstract class Car extends Device implements Salleable{
         System.out.println("Car odpalony.");
     }
     public String toString(){
-        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value + " Production Year: " + this.yearOfProduction;
+        return "Producer: " + this.producer + " Model: " + this.model + " Wartość: " + this.value + " Production Year: " + this.yearOfProduction;
     }
 }

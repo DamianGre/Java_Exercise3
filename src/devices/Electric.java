@@ -15,7 +15,7 @@ public class Electric extends Car{
     }
 
     public String toString(){
-        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value + " Production Year: " + this.yearOfProduction;
+        return "Producer: " + this.producer + " Model: " + this.model + " Wartość:: " + this.value + " Production Year: " + this.yearOfProduction;
     }
 
     @Override

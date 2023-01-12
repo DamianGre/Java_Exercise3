@@ -1,8 +1,10 @@
 package creatures;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.util.List;
+import java.util.Comparator;
 import devices.*;
 
 
@@ -25,7 +27,6 @@ public class Human extends Animal {
     }
 
     public void getSalary() {
-
         for(int x=0; x < salaryDateList.size() || x < salaryHistoryList.size() ; x++) {
             if (this.salaryHistoryList.get(x) < 0) {
                 System.out.println("W dniu: " + this.salaryDateList.get(x)
@@ -35,11 +36,8 @@ public class Human extends Animal {
                         + ". Kwota wynagrodzenia wyniosła: " + this.salaryHistoryList.get(x));
             }
         }
-
         System.out.print("Dzisiaj stan konta wynosi: " + this.salary);
         System.out.println(" ");
-
-
     }
 
     public void setSalary(){
@@ -66,30 +64,59 @@ public class Human extends Animal {
         }while(salary <= 0);
     }
 
-    public devices.Car getCar(int carIndex)
+    public Car getCar(Integer carIndex)
     {
         return this.garage[carIndex];
     }
-    public void setCar(devices.Car car){
-        String salaryDate;
-        if(this.salary >= car.value){
-            System.out.println("Udało się kupić auto " + car + " za gotówkę. Z konta zostanie pobrana kwota: "+ car.value);
-            System.out.println("Podaj Datę przelewu za auto: ");
-            salaryDate = scan2.nextLine();
-            this.salaryDateList.add(salaryDate);
-
-            this.salary -= car.value;
-            this.car = car;
-            double carCost = car.value * (-1);
-            this.salaryHistoryList.add(carCost);
+    public void getAllCarsInGarage()
+    {
+        for(Car cars: garage)
+        {
+            if(cars != null){
+                System.out.println(cars);
             }
-        else if(this.salary >= car.value/12){
-            System.out.println("Udało się kupić auto na raty");
-            this.car = car;
+            continue;
         }
-        else{
-            System.out.println("Nie masz wystarczająco pineniedzy na zakup auta. Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
-        }
+    }
+   public void setCar(Car car, Integer carIndex){
+       try{
+           String salaryDate;
+        if(this.salary >= car.value) {
+            if (this.garage[carIndex] == null) {
+                System.out.println("Udało się kupić auto " + car + " za gotówkę. Z konta zostanie pobrana kwota: " + car.value);
+                System.out.println("Podaj Datę przelewu za auto: ");
+                salaryDate = scan2.nextLine();
+                this.salaryDateList.add(salaryDate);
+
+                this.salary -= car.value;
+                this.garage[carIndex] = car;
+                double carCost = car.value * (-1);
+                this.salaryHistoryList.add(carCost);
+            }else{
+                System.out.println("Na tym miejscu stoi juz auto.");
+            }
+        }else if (this.salary >= car.value / 12) {
+            if (this.garage[carIndex] == null) {
+                System.out.println("Udało się kupić auto NA RATY! " + car + " za gotówkę. Z konta zostanie pobrana kwota: " + car.value);
+                System.out.println("Podaj Datę przelewu za auto: ");
+                salaryDate = scan2.nextLine();
+                this.salaryDateList.add(salaryDate);
+
+                this.salary -= car.value;
+                this.garage[carIndex] = car;
+                double carCost = car.value * (-1);
+                this.salaryHistoryList.add(carCost);
+                }
+                else{
+                System.out.println("Na tym miejscu stoi juz auto. Wybierz inne miejsce");
+                }
+            } else {
+                System.out.println("Nie masz wystarczająco pineniedzy na zakup auta. Zapisz się na studia i znajdź nową robotę albo idź po podwyżkę");
+            }
+
+    }catch (Exception e) {
+           System.out.println("Zły indeks lub coś innego");
+       }
     }
 
     public void sell(Human seller, Human buyer, Double price){
@@ -103,9 +130,32 @@ public class Human extends Animal {
         }
         System.out.println(sumCarValue);
     }
+    public void carsSortingByAge(){
+       Integer arrayWithYearsOfDevice[] = new Integer[this.garage.length];
+
+        for(Integer ix = 0; ix < this.garage.length;ix++)
+        {
+            if(this.garage[ix] == null){
+                arrayWithYearsOfDevice[ix] = -1;
+                continue;
+            }
+            arrayWithYearsOfDevice[ix] = this.garage[ix].yearOfProduction;
+        }
+        Arrays.sort(arrayWithYearsOfDevice);
+        for(Integer i = 0; i < arrayWithYearsOfDevice.length; i++){
+            for(Integer ix = 0; ix < garage.length; ix++){
+                if(garage[ix] == null){
+                    continue;
+                }
+                if(arrayWithYearsOfDevice[i] == garage[ix].yearOfProduction){
+                    System.out.println(garage[ix]);
+                }
+            }
+        }
+    }
 
     public String toString(){
-        return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.car
+        return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.garage
                 + " Phone: " + this.phone + " Salary: " + this.salary;
     }
 }

@@ -14,9 +14,9 @@ public class Phone extends Device implements Salleable{
     private static final String DEFAULT_SERVERIP = "https://damiangrembocki.com";
 
 
-    public Phone(String producer, String model, Integer yearOfProduction)
+    public Phone(String producer, String model, Double value, Integer yearOfProduction)
     {
-        super(producer, model, yearOfProduction);
+        super(producer, model, value, yearOfProduction);
     }
 
 

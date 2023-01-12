@@ -6,27 +6,35 @@ import java.util.Scanner;
 
 public abstract class Car extends Device implements Salleable{
 
-    public Double value;
     Double millage;
     String colour;
     Double width;
     Double height;
     Double lenght;
 
-    public Car(String producer, String model, Double value, Integer yearOfproduction) {
-        super(producer, model, yearOfproduction);
-        this.value =value;
+    public Car(String producer, String model, Double value, Integer yearOfProduction) {
+        super(producer, model, value, yearOfProduction);
     }
-    public void sell(Human seller, Human buyer, Double price){
+    public void sell(Human seller, Human buyer, Double price, Integer carIndex){
         Scanner scan3 = new Scanner(System.in);
 
         String salaryDate;
-        if(seller.car != null)
+        if(seller.garage != null)
         {
             if(buyer.salary >= price)
             {
-                seller.car = null;
-                buyer.car = this;
+                for(int i = 0; i < buyer.garage.length; i++)
+                {
+                    if(buyer.garage[i] == null)
+                    {
+                        buyer.garage[i] = seller.garage[carIndex];
+                        break;
+                    }
+                    else{
+                        System.out.println("Brak miejsca w garażu.");
+                    }
+                }
+                seller.garage[carIndex] = null;
 
                 buyer.salary -= price;
                 seller.salary += price;
@@ -65,6 +73,6 @@ public abstract class Car extends Device implements Salleable{
         System.out.println("Car odpalony.");
     }
     public String toString(){
-        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value;
+        return "Producer: " + this.producer + " Model: " + this.model + " Cena: " + this.value + " Production Year: " + this.yearOfProduction;
     }
 }

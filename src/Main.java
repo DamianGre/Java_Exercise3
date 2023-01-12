@@ -14,115 +14,53 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
 
-        Phone nokia = new Phone("Nokia","5510",1990);
 
-        List<String> appNames = new ArrayList<>();
-        appNames.add("FB");
-        appNames.add("INSTAGRAM");
-        appNames.add("MESSENGER");
-
-        nokia.installAPP(appNames);
-        nokia.installAPP("snake");
-        nokia.installAPP("Tweeter", "4.17");
-        nokia.installAPP("mbank", "1.11", "http://michniewiczKrul.pl");
+        Diesel car1 = new Diesel("Peugeot","307",25000.00,99999);
+        LPG car2 = new LPG("Renault","Scenic",5000.00,1000);
+        LPG car3 = new LPG("asd","asd",3.00,250);
+        LPG car4 = new LPG("asd","asd",3.00,155);
+        LPG car5 = new LPG("asd","asd",3.00,1);
+        LPG car6 = new LPG("asd","asd",3.00,2500);
+        LPG car7 = new LPG("NADMIAR","NADMIAR",99999.00,0);
 
 
 
-        Pet dog = new Pet("dog");
+        Human me = new Human(9);
 
-        dog.name = "Szarik";
-        dog.isAlive = true;
-
-        System.out.println(dog.name);
-        System.out.println(dog.weight);
-        dog.feed();
-        System.out.println(dog.weight);
-
-        Human me = new Human(5);
-        Human human =new Human(3);
-
-        me.firstName = "Damian";
-        me.pet = dog;
-        dog.takeForAWalk();
-        System.out.println(dog.weight);
-        me.pet.feed(5.0);
-        System.out.println(dog.weight);
-        dog.takeForAWalk();
-        dog.takeForAWalk();
-        me.pet.feed();
-        System.out.println(dog.weight);
-
-
-        Diesel car1 = new Diesel("Peugeot","307",25000.00,1900);
-        LPG car2 = new LPG("Renault","Scenic",5000.00,1990);
-
+        me.salary = 5000000.0;
 
         System.out.println(car1);
         System.out.println(car2);
         System.out.println(car1);
         System.out.println(car2);
 
-        Phone phone = new Phone("Samsung","A51",1990);
+        System.out.println("++++++++++");
+        me.setCar(car1,0);
+        System.out.println("++++++++++");
+        me.setCar(car2,1);
+        System.out.println("++++++++++");
+        me.setCar(car3,2);
+        System.out.println("++++++++++");
+        me.setCar(car4,3);
+        System.out.println("++++++++++");
+        me.setCar(car5,4);
+        System.out.println("++++++++++");
+        me.setCar(car6,5);
+        System.out.println("++++++++++");
+        me.getAllCarsInGarage();
+        System.out.println("!!!!!!!!");
+        System.out.println(me.garage.length);
+        System.out.println("!!!!!!!! TERAZ SORT BĘDZIE");
 
-        me.phone = phone;
-
-        me.setCar(car1);
-        me.setSalary();
-        me.setSalary();
-        me.setSalary();
-        me.getSalary();
-        me.setCar(car1);
-        me.getCar();
-        me.getSalary();
-        me.setSalary();
-        me.getSalary();
-
-        System.out.println(new Electric("Peugeot","307",25000.00,1990).equals(new Electric("Peugeot","307",25000.00,1990)));
-
-
-        System.out.println(car1);
-        System.out.println(dog);
-        System.out.println(phone);
-        System.out.println(me);
-
-
-        human.setSalary();
-
-
-
-        System.out.println(me.pet);
-        System.out.println("asdasdsasa");
-        System.out.println(human.pet);
-        System.out.println("asdasdsasa");
-
-        dog.sell(me, human, 50.0);
-
-        System.out.println(me.pet);
-        System.out.println("asdasdsasa");
-        System.out.println(human.pet);
-        System.out.println("asdasdsasa");
-
-        human.setSalary();
-
-        System.out.println(me.phone);
-        System.out.println("asdasdsasa");
-        System.out.println(human.phone);
-
-        phone.sell(me, human, 50.0);
-
-        System.out.println("++++++++++++++");
-
-        System.out.println(me.phone);
-        System.out.println("asdasdsasa");
-        System.out.println(human.phone);
-
-        human.sell(me, human, 50.0);
-
-        human.getSalary();
-        me.getSalary();
-
-
-
+        me.carsSortingByAge();
+        System.out.println("__________________________");
+        me.setCar(car7,10);
+        System.out.println("++++++++++");
+        me.carsSortingByAge();
+        System.out.println("__________________________");
+        me.setCar(car7,6);
+        System.out.println("++++++++++");
+        me.carsSortingByAge();
 
     }
 }

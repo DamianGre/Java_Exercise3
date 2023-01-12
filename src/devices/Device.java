@@ -3,14 +3,17 @@ package devices;
 import creatures.Human;
 
 public abstract class Device implements Salleable{
-    final String producer;
-    final String model;
-    final Integer yearOfProduction;
+    final  public String producer;
+    final  public String model;
+    final public Integer yearOfProduction;
 
-    public Device(String producer, String model,Integer yearOfProduction){
+    public Double value;
+
+    public Device(String producer, String model, Double value, Integer yearOfProduction){
         this.producer =producer;
         this.model = model;
         this.yearOfProduction = yearOfProduction;
+        this.value =value;
     }
 
     abstract void recharge(Integer precentage);

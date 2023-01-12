@@ -30,7 +30,7 @@ public class Main {
         Human human2 = new Human(9);
         human2.firstName = "AGNIESZKA";
 
-        me.salary = 5.0;
+        me.salary = 50000000.0;
         human2.salary = 5.0;
 
         me.setCar(car7,0);
@@ -48,6 +48,15 @@ public class Main {
         System.out.println("--------------------");
         System.out.println("damian " + me.salary);
         System.out.println("AGA " + human2.salary);
+        System.out.println("--------------------");
+
+        me.setCar(car1,1);
+        me.setCar(car2,2);
+        me.setCar(car3,3);
+        me.setCar(car4,4);
+        me.getAllCarsInGarage();
+        System.out.println("--------------------");
+        me.carsSortingByAge();
 
     }
 }

@@ -30,13 +30,13 @@ public class Human extends Animal {
         for(int x=0; x < salaryDateList.size() || x < salaryHistoryList.size() ; x++) {
             if (this.salaryHistoryList.get(x) < 0) {
                 System.out.println("W dniu: " + this.salaryDateList.get(x)
-                        + ". Pobrano z konta: " + this.salaryHistoryList.get(x));
+                        + ". Pobrano z konta: " + this.firstName + ", kwotę: " + this.salaryHistoryList.get(x));
             } else {
                 System.out.println("W dniu: " + this.salaryDateList.get(x)
-                        + ". Kwota wynagrodzenia wyniosła: " + this.salaryHistoryList.get(x));
+                        + ". Kwota zasilenia konta dla: " + this.firstName + ", wyniosła: " + this.salaryHistoryList.get(x));
             }
         }
-        System.out.print("Dzisiaj stan konta wynosi: " + this.salary);
+        System.out.print("Dzisiaj stan konta osoby: "+ this.firstName + ", wynosi: " + this.salary);
         System.out.println(" ");
     }
 
@@ -66,17 +66,22 @@ public class Human extends Animal {
 
     public Car getCar(Integer carIndex)
     {
-        System.out.print("Osoba: "+ this.firstName + " . Posiada na tym miejscu takie auto: ");
+        System.out.print("Osoba: "+ this.firstName + ". Posiada na tym miejscu takie auto: ");
         return this.garage[carIndex];
     }
     public void getAllCarsInGarage()
     {
+        Integer carCounter = 0;
         for(Car cars: garage)
         {
             if(cars != null){
-                System.out.println(cars);
+                System.out.println("Osoba: "+ this.firstName + ". Posiada takie auto: " +cars);
+                carCounter++;
             }
             continue;
+        }
+        if(carCounter == 0){
+            System.out.println("Garaż osoby: " + this.firstName + " jest pusty.");
         }
     }
    public void setCar(Car car, Integer carIndex){

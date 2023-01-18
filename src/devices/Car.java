@@ -59,7 +59,7 @@ public abstract class Car extends Device implements Salleable{
             System.out.println("Nie posiadasz tego na sprzedaż.");
             return;
         }
-        System.out.println("Car: " + this + "- ZOSTASŁ SPRZEDANY");
+        System.out.println("Car: " + this + ". - ZOSTAŁ SPRZEDANY");
     }
     @Override
     public void recharge(Integer precentage) {

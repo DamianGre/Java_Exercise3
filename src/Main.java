@@ -30,33 +30,24 @@ public class Main {
         Human human2 = new Human(9);
         human2.firstName = "AGNIESZKA";
 
-        me.salary = 50000000.0;
-        human2.salary = 5.0;
+        me.salary = 50000.0;
+        human2.salary = 50000.0;
 
-        me.setCar(car7,0);
+        human2.getSalary();
+        me.getSalary();
 
-
-        System.out.println(me.getCar(0));
-        System.out.println(human2.getCar(0));
-        System.out.println("damian " + me.salary);
-        System.out.println("AGA " + human2.salary);
-
-        car7.sell(me,human2,2.0, 1);
-
-        System.out.println(me.getCar(0));
-        System.out.println(human2.getCar(0));
-        System.out.println("--------------------");
-        System.out.println("damian " + me.salary);
-        System.out.println("AGA " + human2.salary);
-        System.out.println("--------------------");
-
-        me.setCar(car1,1);
-        me.setCar(car2,2);
-        me.setCar(car3,3);
-        me.setCar(car4,4);
+        me.setCar(car1, 0);
+        human2.getAllCarsInGarage();
+        human2.getSalary();
         me.getAllCarsInGarage();
-        System.out.println("--------------------");
-        me.carsSortingByAge();
+        me.getSalary();
 
+        car1.sell(me, human2, 25000.0, 0);
+
+        System.out.println("++++++++++");
+        human2.getAllCarsInGarage();
+        human2.getSalary();
+        me.getAllCarsInGarage();
+        me.getSalary();
     }
 }

@@ -8,6 +8,7 @@ import devices.LPG;
 import devices.Phone;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -30,10 +31,24 @@ public class Main {
         Human human2 = new Human(9);
         human2.firstName = "AGNIESZKA";
 
-        me.salary = 50000.0;
+        me.salary = 5000000.0;
         human2.salary = 50000.0;
 
-        human2.getSalary();
+        me.setCar(car1, 0);
+        me.setCar(car2, 1);
+        me.setCar(car3, 2);
+        me.setCar(car4, 3);
+        me.setCar(car5, 4);
+
+
+        me.sortCarsByValue();
+
+        me.getAllCarsInGarage();
+
+
+        me.sumCarsValue();
+
+        /* human2.getSalary();
         me.getSalary();
 
         me.setCar(car1, 0);
@@ -48,6 +63,6 @@ public class Main {
         human2.getAllCarsInGarage();
         human2.getSalary();
         me.getAllCarsInGarage();
-        me.getSalary();
+        me.getSalary(); */
     }
 }

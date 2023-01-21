@@ -7,7 +7,7 @@ public abstract class Device implements Salleable{
     final  public String model;
     final public Integer yearOfProduction;
 
-    public Double value;
+    public Double value = 0.0;
 
     public Device(String producer, String model, Double value, Integer yearOfProduction){
         this.producer =producer;

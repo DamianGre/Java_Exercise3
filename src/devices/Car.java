@@ -4,7 +4,7 @@ import creatures.Human;
 
 import java.util.Scanner;
 
-public abstract class Car extends Device implements Salleable{
+public abstract class Car extends Device implements Salleable, Comparable<Car>{
 
     Double millage;
     String colour;
@@ -15,8 +15,27 @@ public abstract class Car extends Device implements Salleable{
     public Car(String producer, String model, Double value, Integer yearOfProduction) {
         super(producer, model, value, yearOfProduction);
     }
-    public void sell(Human seller, Human buyer, Double price, Integer carIndex){
 
+    public void sell(Human seller, Human buyer, Double price) throws Exception{
+        if(!seller.hasACar(this)){
+            throw new Exception("Sprzedawca nie ma tego auta.");
+        }
+
+        if(!buyer.canHaveMoreCars()){
+            throw new Exception("Kupujący nie ma więcej miejsca w garażu.");
+        }
+        if(buyer.hasLessMoneyThen(price)){
+            throw new Exception("Kupujący nie ma dość pieniędzy.");
+        }
+
+        seller.removeCar(this);
+        buyer.addCar(this);
+        seller.addMoney(price);
+        buyer.collectMoney(price);
+        System.out.println("Transakcja się powiodła.");
+
+    }
+    public void sell(Human seller, Human buyer, Double price, Integer carIndex){
         Scanner scan3 = new Scanner(System.in);
 
         String salaryDate;
@@ -61,6 +80,10 @@ public abstract class Car extends Device implements Salleable{
         }
         System.out.println("Car: " + this + ". - ZOSTAŁ SPRZEDANY");
     }
+
+    public int getYearOfProduction(){
+        return this.yearOfProduction;
+    }
     @Override
     public void recharge(Integer precentage) {
         System.out.println("Ładuje");
@@ -70,6 +93,11 @@ public abstract class Car extends Device implements Salleable{
         System.out.println("Naładowano" + precentage);
     }
     public abstract void reFuel();
+
+    @Override
+    public int compareTo(Car otherCar){
+        return this.yearOfProduction.compareTo(otherCar.yearOfProduction);
+    }
 
     @Override
     public void turnOn(){

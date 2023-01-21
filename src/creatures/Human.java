@@ -1,5 +1,6 @@
 package creatures;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
@@ -9,11 +10,12 @@ import devices.*;
 
 
 public class Human extends Animal {
+    public final static Integer DEFAULT_GARAGE_SIZE = 3;
+    private final static String SPECIE_OF_HUMAN = "Homo Sapiens.";
     public String firstName;
     String lastName;
     public Animal pet;
     public Car [] garage; // miejsca parkingowe są ponumerowane od 0
-    //public Car car;
     public Double salary = 0.0;
     public Phone phone;
     Scanner scan = new Scanner(System.in);
@@ -21,8 +23,13 @@ public class Human extends Animal {
     public List<Double> salaryHistoryList = new ArrayList<Double>();
     public List<String> salaryDateList = new ArrayList<String>();
 
+    public Human() {
+        super(SPECIE_OF_HUMAN);
+        this.garage= new Car[DEFAULT_GARAGE_SIZE];
+    }
+
     public Human(Integer garageSize) {
-        super("Homo sapiens");
+        super(SPECIE_OF_HUMAN);
         this.garage= new Car[garageSize];
     }
 
@@ -66,7 +73,12 @@ public class Human extends Animal {
 
     public Car getCar(Integer carIndex)
     {
-        System.out.print("Osoba: "+ this.firstName + ". Posiada na tym miejscu takie auto: ");
+        if(carIndex >= garage.length || carIndex < 0){
+            Integer x = 0;
+            System.out.println("Zły index");
+            return this.garage[x];
+        }
+        System.out.println("Osoba: "+ this.firstName + ". Posiada na tym miejscu takie auto: " + this.garage[carIndex]);
         return this.garage[carIndex];
     }
     public void getAllCarsInGarage()
@@ -132,12 +144,31 @@ public class Human extends Animal {
     public void sumCarsValue(){
         Double sumCarValue = 0.0;
         for(Car car: garage){
-            sumCarValue += car.value; // !!!!!!!!!!!!!!! ZOBACZ CZY TO OK JEST
+            if(car == null)
+            {
+                continue;
+            }
+            sumCarValue += car.value;
         }
-        System.out.println(sumCarValue);
+        System.out.println("Suma wszystkich aut wynosi: " + sumCarValue);
     }
-    public void carsSortingByAge(){
+    public void sortGarageByYearOfProd(){
+            Arrays.sort(this.garage, Comparator.nullsFirst(Comparator.comparingInt(Car::getYearOfProduction)));
+            System.out.println("Garaż posortowany");
+    }
+
+    public void sortCarsByValue(){
+        CarByValueComparator comparator = new CarByValueComparator();
+        Arrays.sort(this.garage, comparator);
+    }
+
+
+
+
+    public void carsSortingByAgeToViewInNewArrayWithOutChangingThierPlaceInGarage(){  // SORTUJE DO NOWE TABLICE A GARAŻ JEST NIE POSORTOWANY
        Integer arrayWithYearsOfDevice[] = new Integer[this.garage.length];
+
+        System.out.println("Oto samochody posortowane po roku produkcji.");
 
         for(Integer ix = 0; ix < this.garage.length;ix++)
         {
@@ -163,5 +194,16 @@ public class Human extends Animal {
     public String toString(){
         return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.garage
                 + " Phone: " + this.phone + " Salary: " + this.salary;
+    }
+
+    public boolean hasACar(Car car) {
+        Boolean hasACar = false;
+
+        for(Integer i = 0; i < this.garage.length; i++){
+            if(car.equals(this.garage[i])){
+                hasACar = true;
+            }
+        }
+        return hasACar;
     }
 }

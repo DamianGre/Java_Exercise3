@@ -71,12 +71,9 @@ public class Human extends Animal {
         }while(salary <= 0);
     }
 
-    public Car getCar(Integer carIndex)
-    {
+    public Car getCar(Integer carIndex)throws Exception    {
         if(carIndex >= garage.length || carIndex < 0){
-            Integer x = 0;
-            System.out.println("Zły index");
-            return this.garage[x];
+            throw new Exception("zły index.");
         }
         System.out.println("Osoba: "+ this.firstName + ". Posiada na tym miejscu takie auto: " + this.garage[carIndex]);
         return this.garage[carIndex];

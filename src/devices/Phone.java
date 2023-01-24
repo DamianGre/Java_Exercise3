@@ -2,16 +2,18 @@ package devices;
 
 import creatures.Edible;
 import creatures.Human;
-import java.util.List;
+
+import java.util.*;
 
 
 import java.util.List;
-import java.util.Scanner;
 
 public class Phone extends Device implements Salleable{
 
     private static final  String DEFAULT_VERSION = "latest version";
     private static final String DEFAULT_SERVERIP = "https://damiangrembocki.com";
+
+    public List<Application> instaledApplicationList = new ArrayList<Application>();
 
 
     public Phone(String producer, String model, Double value, Integer yearOfProduction)
@@ -19,7 +21,66 @@ public class Phone extends Device implements Salleable{
         super(producer, model, value, yearOfProduction);
     }
 
+    public void installApp(Human human,Application application){
+        if(human.salary >= application.price){
+            human.salary -= application.price;
+            this.instaledApplicationList.add(application);
+            System.out.println("Applikacja: " + application + " została zainstalowana.");
+        }
+    }
+    public void installedAppChecker(Application application){
+        Boolean appIsInstalled = false;
+        for(int i = 0; i < this.instaledApplicationList.size(); i++){
+            if(application.equals(this.instaledApplicationList.get(i))){
+                appIsInstalled = true;
+            }
+        }
+        if(appIsInstalled == true){
+            System.out.println("Aplikacja jest zainstalowana na telefonie.");
+        }
+        else{
+            System.out.println("NIE MA TAKIEJ aplikacji na telefonie.");
+        }
+    }
+    public void installedAppCheckerByName(String applicationName){
+        Boolean appIsInstalled = false;
+        for(int i = 0; i < this.instaledApplicationList.size(); i++){
+            if(applicationName.equals(this.instaledApplicationList.get(i).name)){
+                appIsInstalled = true;
+            }
+        }
+        if(appIsInstalled == true){
+            System.out.println("Aplikacja jest zainstalowana na telefonie.");
+        }
+        else{
+            System.out.println("NIE MA TAKIEJ aplikacji na telefonie.");
+        }
+    }
+    public void freeAppPrinter(){
+        for(int i = 0; i < this.instaledApplicationList.size(); i++){
+            if(this.instaledApplicationList.get(i).price == 0.0){
+                System.out.println("Darmowa Apka - " + this.instaledApplicationList.get(i));
+            }
+        }
+    }
+    public Double sumOfApps(){
+        Double allAppsPrice = 0.0;
+        for(int i = 0; i < this.instaledApplicationList.size(); i++){
+            allAppsPrice += this.instaledApplicationList.get(i).price;
+        }
+        return allAppsPrice;
+    }
 
+    public void allAppsNamesPrinter(){
+        for(Application app: instaledApplicationList){
+            System.out.println(app.name);
+        }
+    }
+    public void allAppsPricePrinter(){
+        for(Application app: instaledApplicationList){
+            System.out.println(app.price);
+        }
+    }
 
     public void sell(Human seller, Human buyer, Double price){
 

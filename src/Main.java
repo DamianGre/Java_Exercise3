@@ -2,10 +2,7 @@ import creatures.Animal;
 import creatures.FarmAnimal;
 import creatures.Pet;
 import creatures.Human;
-import devices.Electric;
-import devices.Diesel;
-import devices.LPG;
-import devices.Phone;
+import devices.*;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -24,7 +21,15 @@ public class Main {
         LPG car6 = new LPG("asd","asd",3.00,2500);
         LPG car7 = new LPG("NADMIAR","NADMIAR",1.00,0);
 
+        Application app1 = new Application("GAGLE", "1.0",1.0);
+        Application app2 = new Application("MIKROSAWD", "2.0",2.0);
+        Application app3 = new Application("IJOES", "3.0",3.0);
+        Application app4 = new Application("LIMUKS", "4.0",4.0);
+        Application app5 = new Application("FREE", "6.0",0.0);
+        Application app6 = new Application("ASD", "126.0",1111.0);
 
+
+        Phone phone = new Phone("Nokia", "3310", 500.0, 1995);
 
         Human me = new Human(9);
         me.firstName = "damian";
@@ -34,7 +39,32 @@ public class Main {
         me.salary = 5000000.0;
         human2.salary = 5000000.0;
 
-        car1.ownerChecker();
+        me.phone = phone;
+
+        phone.installApp(me, app1);
+        phone.installApp(me, app2);
+        phone.installApp(me, app3);
+        phone.installApp(me, app4);
+        phone.installApp(me, app5);
+
+        System.out.println("111111111 ++++++++++");
+        phone.installedAppChecker(app1);
+        phone.installedAppChecker(app6);
+        System.out.println("22222222 ++++++++++++");
+        phone.installedAppCheckerByName("GAGLE");
+        phone.installedAppCheckerByName("ASDASDASD");
+        System.out.println("3333333 ++++++++++++");
+        phone.freeAppPrinter();
+        System.out.println("4444444 ++++++++++++");
+        System.out.println("Suma wartości zainstalowanych aplikacji wynosi: " + phone.sumOfApps());
+        System.out.println("55555 ++++++++++++");
+        phone.allAppsNamesPrinter();
+        System.out.println("66666 ++++++++++++");
+        phone.allAppsPricePrinter();
+
+
+
+        /* car1.ownerChecker();
 
         me.setCar(car1,0);
         car1.ownerChecker();
@@ -58,7 +88,7 @@ public class Main {
         car1.numberOfTransactionsWithCar();
         car3.numberOfTransactionsWithCar();
 
-        /* human2.getSalary();
+        human2.getSalary();
         me.getSalary();
 
         me.setCar(car1, 0);

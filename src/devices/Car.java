@@ -20,7 +20,6 @@ public abstract class Car extends Device implements Salleable, Comparable<Car>{
         if(!seller.hasACar(this)){
             throw new Exception("Sprzedawca nie ma tego auta.");
         }
-
         if(!buyer.canHaveMoreCars()){
             throw new Exception("Kupujący nie ma więcej miejsca w garażu.");
         }
@@ -31,11 +30,14 @@ public abstract class Car extends Device implements Salleable, Comparable<Car>{
         seller.removeCar(this);
         buyer.addCar(this);
         seller.addMoney(price);
+        seller.salaryDateList.add("Transakcja sprzedaż/kupno auta");
+        seller.salaryHistoryList.add(price);
         buyer.collectMoney(price);
-        System.out.println("Transakcja się powiodła.");
-
+        buyer.salaryDateList.add("Transakcja sprzedaż/kupno auta");
+        buyer.salaryHistoryList.add(price * -1);
+        System.out.println("Transakcja się powiodła. To auto: " + this + " zostało sprzedane do: " + buyer);
     }
-    public void sell(Human seller, Human buyer, Double price, Integer carIndex){
+    /* public void sell(Human seller, Human buyer, Double price, Integer carIndex){
         Scanner scan3 = new Scanner(System.in);
 
         String salaryDate;
@@ -79,7 +81,7 @@ public abstract class Car extends Device implements Salleable, Comparable<Car>{
             return;
         }
         System.out.println("Car: " + this + ". - ZOSTAŁ SPRZEDANY");
-    }
+    } */
 
     public int getYearOfProduction(){
         return this.yearOfProduction;

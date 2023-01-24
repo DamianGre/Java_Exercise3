@@ -18,8 +18,5 @@ public class Electric extends Car{
         return "Producer: " + this.producer + " Model: " + this.model + " Wartość:: " + this.value + " Production Year: " + this.yearOfProduction;
     }
 
-    @Override
-    public void sell(Human seller, Human buyer, Double price) {
 
-    }
 }

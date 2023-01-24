@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
 
         Diesel car1 = new Diesel("Peugeot","307",25000.00,99999);
@@ -34,19 +34,18 @@ public class Main {
         me.salary = 5000000.0;
         human2.salary = 50000.0;
 
-        me.setCar(car1, 0);
-        me.setCar(car2, 1);
-        me.setCar(car3, 2);
-        me.setCar(car4, 3);
-        me.setCar(car5, 4);
-
-
-        me.sortCarsByValue();
-
+        me.setCar(car1,0);
         me.getAllCarsInGarage();
 
+        car1.sell(me, human2, 1.0);
 
-        me.sumCarsValue();
+        System.out.println("-------------------");
+        me.getAllCarsInGarage();
+        System.out.println("+++++++++++++++++++++++");
+        human2.getAllCarsInGarage();
+        System.out.println("SSSSSSSSSSSSSSSSSSSS");
+        me.getSalary();
+        human2.getSalary();
 
         /* human2.getSalary();
         me.getSalary();

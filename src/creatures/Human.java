@@ -188,11 +188,6 @@ public class Human extends Animal {
         }
     }
 
-    public String toString(){
-        return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet + " Car: " + this.garage
-                + " Phone: " + this.phone + " Salary: " + this.salary;
-    }
-
     public boolean hasACar(Car car) {
         Boolean hasACar = false;
 
@@ -202,5 +197,49 @@ public class Human extends Animal {
             }
         }
         return hasACar;
+    }
+    public boolean canHaveMoreCars() {
+        Boolean haveFreeSpaceForCar = false;
+
+        for(Integer i = 0; i < this.garage.length; i++){
+            if(this.garage[i] == null){
+                haveFreeSpaceForCar = true;
+            }
+        }
+        return haveFreeSpaceForCar;
+    }
+    public boolean hasLessMoneyThen(Double price) {
+        Boolean hasMoneyToBuy = false;
+        if (price >= this.salary) {
+            hasMoneyToBuy = true;
+        }
+        return hasMoneyToBuy;
+    }
+    public void removeCar(Car car){
+        for(Integer i = 0; i < this.garage.length; i++){
+            if(car.equals(this.garage[i])){
+                this.garage[i] = null;
+            }
+        }
+    }
+    public void addCar(Car car){
+        for(Integer i = 0; i < this.garage.length; i++){
+            if(this.garage[i] == null){
+                this.garage[i] = car;
+                return;
+            }
+        }
+    }
+    public void addMoney(Double price){
+        this.salary += price;
+    }
+    public void collectMoney(Double price){
+        this.salary -= price;
+    }
+
+
+    public String toString(){
+        return "First name: " + this.firstName + " Last name: " + this.lastName + " Animal: " + this.pet
+                + " Phone: " + this.phone + " Salary: " + this.salary;
     }
 }

@@ -32,10 +32,14 @@ public class Main {
         human2.firstName = "AGNIESZKA";
 
         me.salary = 5000000.0;
-        human2.salary = 50000.0;
+        human2.salary = 5000000.0;
+
+        car1.ownerChecker();
 
         me.setCar(car1,0);
+        car1.ownerChecker();
         me.getAllCarsInGarage();
+
 
         car1.sell(me, human2, 1.0);
 
@@ -46,6 +50,13 @@ public class Main {
         System.out.println("SSSSSSSSSSSSSSSSSSSS");
         me.getSalary();
         human2.getSalary();
+        System.out.println("AAAAAAAAAA");
+        car1.getPresentOwner();
+        System.out.println("'''''''''''''''''''");
+        car1.hasSellerSoldToBuyer(me, human2);
+        car1.hasSellerSoldToBuyer(human2, me);
+        car1.numberOfTransactionsWithCar();
+        car3.numberOfTransactionsWithCar();
 
         /* human2.getSalary();
         me.getSalary();

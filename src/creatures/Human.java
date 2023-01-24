@@ -107,6 +107,7 @@ public class Human extends Animal {
                 this.garage[carIndex] = car;
                 double carCost = car.value * (-1);
                 this.salaryHistoryList.add(carCost);
+                car.ownerHistoryList.add(this);
             }else{
                 System.out.println("Na tym miejscu stoi juz auto.");
             }
@@ -121,6 +122,7 @@ public class Human extends Animal {
                 this.garage[carIndex] = car;
                 double carCost = car.value * (-1);
                 this.salaryHistoryList.add(carCost);
+                car.ownerHistoryList.add(this);
                 }
                 else{
                 System.out.println("Na tym miejscu stoi juz auto. Wybierz inne miejsce");
@@ -209,11 +211,23 @@ public class Human extends Animal {
         return haveFreeSpaceForCar;
     }
     public boolean hasLessMoneyThen(Double price) {
-        Boolean hasMoneyToBuy = false;
-        if (price >= this.salary) {
-            hasMoneyToBuy = true;
+        Boolean hasMoneyToBuy = true;
+        if (price > this.salary) {
+            hasMoneyToBuy = false;
         }
         return hasMoneyToBuy;
+    }
+
+
+    public boolean isLastOwnerOfCar(Car car, Human seller) {
+        Boolean isLastOwner = false;
+
+        for(Integer i = 0; i < car.ownerHistoryList.size(); i++){
+            if(car.ownerHistoryList.get(i) == seller){
+                isLastOwner = true;
+            }
+        }
+        return isLastOwner;
     }
     public void removeCar(Car car){
         for(Integer i = 0; i < this.garage.length; i++){
